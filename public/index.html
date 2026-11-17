@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NYX RRHH - Descargar para Linux</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Inter", "Segoe UI", "Noto Sans", sans-serif; }
+  body { background: #f4f3f2; color: #0f0f0f; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  main { background: #ffffff; border: 1px solid #e2e0df; border-radius: 24px; padding: 40px; max-width: 640px; width: 100%; text-align: center; }
+  img { width: 96px; height: 96px; object-fit: contain; }
+  h1 { font-size: 28px; margin-top: 12px; }
+  p { color: #73716f; font-size: 14px; margin-top: 8px; line-height: 1.5; }
+  .cmd { display: flex; align-items: center; gap: 10px; background: #0f0f0f; color: #ffffff; border-radius: 14px; padding: 14px 16px; margin-top: 24px; text-align: left; }
+  .cmd code { flex: 1; font-family: "DejaVu Sans Mono", monospace; font-size: 13px; overflow-x: auto; white-space: nowrap; }
+  button { background: #ffffff; color: #0f0f0f; border: none; border-radius: 10px; padding: 8px 14px; font-size: 12px; font-weight: 600; cursor: pointer; }
+  button:hover { background: #e2e0df; }
+  h2 { font-size: 13px; margin-top: 26px; text-align: left; }
+  .mini { background: #f4f3f2; border: 1px solid #e2e0df; border-radius: 10px; padding: 10px 12px; margin-top: 8px; text-align: left; font-family: "DejaVu Sans Mono", monospace; font-size: 12px; overflow-x: auto; white-space: nowrap; }
+  a { color: #0f0f0f; font-weight: 600; }
+  .links { margin-top: 24px; font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <img src="NYX.png" alt="NYX">
+  <h1>NYX RRHH</h1>
+  <p>Sistema de escritorio para Linux. Se instala con un solo comando, sin permisos de administrador.</p>
+
+  <div class="cmd">
+    <code id="cmd">curl -fsSL https://TU-PROYECTO.vercel.app/install | bash</code>
+    <button id="copiar">Copiar</button>
+  </div>
+
+  <h2>Desinstalar</h2>
+  <div class="mini" id="desinstalar">curl -fsSL https://TU-PROYECTO.vercel.app/install | bash -s -- --uninstall</div>
+
+  <p class="links">
+    <a href="/install.sh">Ver el script</a> ·
+    <a href="https://github.com/ParkMu-Jin/nyx/releases/latest/download/NYX">Descargar el binario</a>
+  </p>
+  <p>Funciona en Linux de 64 bits (Debian, Ubuntu, Fedora, Arch y derivadas).</p>
+</main>
+<script>
+  const base = location.origin;
+  const cmd = document.getElementById("cmd");
+  cmd.textContent = "curl -fsSL " + base + "/install | bash";
+  document.getElementById("desinstalar").textContent =
+    "curl -fsSL " + base + "/install | bash -s -- --uninstall";
+  document.getElementById("copiar").addEventListener("click", function () {
+    navigator.clipboard.writeText(cmd.textContent);
+    this.textContent = "Copiado";
+    setTimeout(() => { this.textContent = "Copiar"; }, 1800);
+  });
+</script>
+</body>
+</html>
